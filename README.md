@@ -1,54 +1,43 @@
-# React + TypeScript + Vite
+# Jeu du Pendu - Elias Zerar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet est une version du jeu du pendu, réalisée dans le cadre d'un projet universitaire. Il comprend une interface front-end développée avec **React** et **TypeScript**, ainsi qu'une API créée avec **Node.js** et **TypeScript**, qui génère des mots aléatoires pour le jeu.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clonez le dépôt avec les sous-modules** :
+    ```bash
+    git clone --recurse-submodules https://github.com/EliasZerar/hangman-react
+    ```
 
-## Expanding the ESLint configuration
+2. **Accédez au dossier du projet** :
+    ```bash
+    cd hangman_react
+    ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. **Installez les dépendances pour le front-end** :
+    ```bash
+    npm install
+    ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. **Allez ensuite dans le répertoire `node-hangman-api`** :
+    ```bash
+    cd node-hangman-api
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+5. **Installez les dépendances pour l'API** :
+    ```bash
+    npm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+6. **Lancez les deux parties, le front-end et le back-end** :
+    - Dans le dossier `hangman_react` (dossier racine), exécutez :
+    ```bash
+    npm run dev
+    ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+    - Dans le dossier `node-hangman-api`, exécutez :
+    ```bash
+    npm run dev
+    ```
+
+7. **Une fois les deux serveurs en cours d'exécution, accédez à l'application via** [http://localhost:5173](http://localhost:5173)
