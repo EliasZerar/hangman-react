@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type WordDisplayProps = {
   word: string;
@@ -6,17 +6,10 @@ type WordDisplayProps = {
 };
 
 const WordDisplay = ({ word, guessedLetters }: WordDisplayProps) => {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden] = useState(true); 
 
   const normalize = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsHidden(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="word-display">

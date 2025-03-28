@@ -72,6 +72,29 @@ const Hangman = () => {
     }
   }, [guessedLetters, attemptsLeft, word]);
 
+  const restartGame = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+    setAttemptsLeft(10);
+    setMessage("");
+    setIsWinner(null);
+
+    const fetchWord = async () => {
+      const data = await fetchData();
+      if (data && data.word) {
+        const fullWord = data.word;
+        const startIdx = Math.floor(Math.random() * (fullWord.length - 3));
+        const selectedWord = fullWord.slice(startIdx, startIdx + 5);
+        const wordsArray = fullWord.split(" ");
+        const randomWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+        const finalWord = randomWord.length > 3 ? randomWord : selectedWord;
+        setWord(finalWord);
+      }
+    };
+
+    fetchWord();
+  };
+
   return (
     <div className="hangman-container">
       <Wrongletter wrongLetters={wrongLetters} />
@@ -89,7 +112,7 @@ const Hangman = () => {
       >
         {message}
       </p>
-      <HangmanResult isWinner={isWinner} />
+      <HangmanResult isWinner={isWinner} onRestart={restartGame} />
     </div>
   );
 };
